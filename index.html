@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Título — Protótipo de Alta Fidelidade</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-50: #E6F1FB;
+      --blue-100: #B5D4F4;
+      --blue-600: #185FA5;
+      --blue-800: #0C447C;
+      --blue-900: #042C53;
+      --teal-50: #E1F5EE;
+      --teal-600: #0F6E56;
+      --teal-800: #085041;
+      --gray-100: #D3D1C7;
+      --gray-200: #B4B2A9;
+      --gray-600: #5F5E5A;
+      --white: #ffffff;
+      --off: #F7F7F5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--off);
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--blue-900);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, #185FA5 0%, transparent 70%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(181, 212, 244, 0.15);
+      border: 1px solid rgba(181, 212, 244, 0.3);
+      color: var(--blue-100);
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 span {
+      color: #85B7EB;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      position: relative;
+      margin-top: 0.75rem;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 16px;
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card:hover {
+      border-color: var(--blue-100);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(24, 95, 165, 0.1);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-icon.blue { background: var(--blue-50); }
+    .card-icon.teal { background: var(--teal-50); }
+
+    .card-icon svg { width: 22px; height: 22px; }
+
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .card p {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .card .arrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue-600);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── INFO SECTION ── */
+    .info {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .info h3 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-200);
+      margin-bottom: 1rem;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #F0F0EE;
+      font-size: 0.875rem;
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .info-row .label { color: var(--gray-600); }
+    .info-row .value { font-weight: 500; color: #111; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.75rem;
+      color: var(--gray-200);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>E-<span>Título</span></h1>
+    <p class="sub">Projeto de UX/UI</p>
+  </header>
+
+  <main class="content">
+
+    <div class="cards">
+
+      <!-- Card: Figma navegável -->
+      <a class="card"
+         href="https://www.figma.com/design/k7b3E9stMRnJLfdgA7dCeM/E-Titulo?node-id=222-511&t=ShxSd5UyJLIuoak6-1"
+         target="_blank"
+         rel="noopener">
+        <div class="card-icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
+            <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
+            <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+            <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 0 1-7 0z"/>
+            <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
+          </svg>
+        </div>
+        <h2>Protótipo Navegável</h2>
+        <p>Acesse o protótipo interativo no Figma e navegue pelas telas do E-Título.</p>
+        <span class="arrow">Abrir no Figma →</span>
+      </a>
+
+      <!-- Card: PDF -->
+      <a class="card" href="prototipo.pdf" target="_blank">
+        <div class="card-icon teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <line x1="10" y1="9" x2="8" y2="9"/>
+          </svg>
+        </div>
+        <h2>Documento PDF</h2>
+        <p>Visualize ou baixe o protótipo em PDF com todas as telas do projeto.</p>
+        <span class="arrow" style="color: var(--teal-600);">Baixar PDF →</span>
+      </a>
+
+    </div>
+
+    <div class="info">
+      <h3>Sobre o projeto</h3>
+      <div class="info-row">
+        <span class="label">Projeto</span>
+        <span class="value">E-Título</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Tipo</span>
+        <span class="value">Protótipo de Alta Fidelidade</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Ferramenta</span>
+        <span class="value">Figma</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Entrega</span>
+        <span class="value">GitHub Pages</span>
+      </div>
+    </div>
+
+    <div class="info" style="margin-top: 1rem;">
+      <h3>Integrantes do Grupo</h3>
+      <div class="info-row">
+        <span class="label">Arthur Romano da Luz</span>
+        <span class="value">RA: 168.498</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Larissa Lumi Hayakawa de Sá</span>
+        <span class="value">RA: 176.551</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Leonardo Arazo de Oliveira Araújo</span>
+        <span class="value">RA: 168.873</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Luiz Felipe de Jesus Silva</span>
+        <span class="value">RA: 170.294</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Shogo Miyazaki</span>
+        <span class="value">RA: 170.301</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    E-Título
+  </footer>
+
+</body>
+</html>
